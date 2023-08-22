@@ -10,7 +10,7 @@ class _MySplashState extends State<MySplash> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 3),
         ()=>Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -22,16 +22,15 @@ class _MySplashState extends State<MySplash> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FlutterLogo(size: MediaQuery.of(context).size.height/2),
-            SizedBox(height: 16),
-            CircularProgressIndicator(),
-          ],
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.blue, Colors.purple],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
+      ),
+      child: Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }
