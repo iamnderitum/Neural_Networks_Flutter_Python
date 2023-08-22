@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:human_generator_app/home.dart';
 
 class MySplash extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _MySplashState extends State<MySplash> {
         ()=>Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder:(context) => SecondScreen(),
+            builder:(context) => Home(),
             ),
           ),
     );
@@ -24,13 +25,30 @@ class _MySplashState extends State<MySplash> {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blue, Colors.purple],
+          colors: [
+                  Color.fromRGBO(138, 35, 135, 1.0),
+                  Color.fromRGBO(255, 64, 87, 1.0),
+                  Color.fromRGBO(242, 113, 33, 1.0)
+                ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
       ),
       child: Center(
-        child: CircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(height: 16),
+            Text(
+              "Human Generator App ...",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            )
+          ],
+        )
       ),
     );
   }
