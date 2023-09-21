@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:human_generator_app/home.dart';
+import 'package:human_generator_app/drawingarea.dart';
+import 'package:human_generator_app/drawingarea.dart';
+
 class Home extends StatefulWidget{
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  List<DrawingArea> points = [];
   @override
   Widget build (BuildContext context){
     return Scaffold(
@@ -24,6 +27,51 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Container(
+                    width: 256,
+                    height: 256,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 5.0,
+                          spreadRadius: 1
+                        ),
+                      ]
+                    ),
+                    child: GestureDetector(
+                      onPanDown: (details){
+                        this.setState(() {
+                          points.add(
+                            DrawingArea(
+                              point: details.localPosition,
+                              areaPaint: Paint()
+                              ..strokeCap = StrokeCap.round
+                              ..isAntiAlias = true
+                              ..color = Colors.white
+                              ..strokeWidth = 2.0),
+                              );
+                        });
+                      }
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+
         ],
       ),
     );

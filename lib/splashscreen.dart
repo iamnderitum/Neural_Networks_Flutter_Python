@@ -25,7 +25,7 @@ class _MySplashState extends State<MySplash> {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
+          colors: [ch
                   Color.fromRGBO(138, 35, 135, 1.0),
                   Color.fromRGBO(255, 64, 87, 1.0),
                   Color.fromRGBO(242, 113, 33, 1.0)
